@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="todo_dashboard_main" model="todo.dashboard">
+        <field name="name">Task Studio Dashboard</field>
+    </record>
+
+    <record id="view_todo_dashboard_form" model="ir.ui.view">
+        <field name="name">todo.dashboard.form</field>
+        <field name="model">todo.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Task Studio Dashboard" create="0" edit="0" delete="0" class="o_todo_dashboard">
+                <sheet>
+                    <div class="o_todo_dashboard_header">
+                        <span class="o_todo_dashboard_eyebrow">WORKSPACE</span>
+                        <h1>Task overview</h1>
+                    </div>
+                    <div class="o_todo_dashboard_grid">
+                        <button type="object" name="action_open_total_tasks" class="o_todo_kpi o_todo_kpi--blue">
+                            <div class="o_todo_kpi_content">
+                                <span class="o_todo_kpi_label">All tasks</span>
+                                <span class="o_todo_kpi_value"><field name="total_tasks"/></span>
+                                <span class="o_todo_kpi_note">Across your workspace</span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_open_my_tasks" class="o_todo_kpi o_todo_kpi--teal">
+                            <div class="o_todo_kpi_content">
+                                <span class="o_todo_kpi_label">My tasks</span>
+                                <span class="o_todo_kpi_value"><field name="my_tasks"/></span>
+                                <span class="o_todo_kpi_note">Assigned to you</span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_open_new_tasks" class="o_todo_kpi o_todo_kpi--violet">
+                            <div class="o_todo_kpi_content">
+                                <span class="o_todo_kpi_label">New</span>
+                                <span class="o_todo_kpi_value"><field name="new_tasks"/></span>
+                                <span class="o_todo_kpi_note">Ready to pick up</span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_open_in_progress" class="o_todo_kpi o_todo_kpi--amber">
+                            <div class="o_todo_kpi_content">
+                                <span class="o_todo_kpi_label">In progress</span>
+                                <span class="o_todo_kpi_value"><field name="in_progress_tasks"/></span>
+                                <span class="o_todo_kpi_note">Currently underway</span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_open_waiting" class="o_todo_kpi o_todo_kpi--coral">
+                            <div class="o_todo_kpi_content">
+                                <span class="o_todo_kpi_label">Waiting</span>
+                                <span class="o_todo_kpi_value"><field name="waiting_tasks"/></span>
+                                <span class="o_todo_kpi_note">Paused or blocked</span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_open_completed" class="o_todo_kpi o_todo_kpi--green">
+                            <div class="o_todo_kpi_content">
+                                <span class="o_todo_kpi_label">Completed</span>
+                                <span class="o_todo_kpi_value"><field name="completed_tasks"/></span>
+                                <span class="o_todo_kpi_note">Work finished</span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_open_overdue" class="o_todo_kpi o_todo_kpi--red">
+                            <div class="o_todo_kpi_content">
+                                <span class="o_todo_kpi_label">Overdue</span>
+                                <span class="o_todo_kpi_value"><field name="overdue_tasks"/></span>
+                                <span class="o_todo_kpi_note">Past the deadline</span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_open_high_priority" class="o_todo_kpi o_todo_kpi--pink">
+                            <div class="o_todo_kpi_content">
+                                <span class="o_todo_kpi_label">High priority</span>
+                                <span class="o_todo_kpi_value"><field name="high_priority_tasks"/></span>
+                                <span class="o_todo_kpi_note">Needs extra attention</span>
+                            </div>
+                        </button>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_todo_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">todo.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="view_id" ref="view_todo_dashboard_form"/>
+        <field name="res_id" eval="ref('todo_dashboard_main')"/>
+    </record>
+</odoo>

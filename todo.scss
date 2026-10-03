@@ -1,0 +1,165 @@
+$todo-ink: #203342;
+$todo-muted: #6d7f89;
+
+.o_todo_dashboard {
+    background: #f2f6f7;
+
+    .o_todo_dashboard_header {
+        margin: 0 0 1.5rem;
+        padding: 1.5rem 1.75rem;
+        border-radius: 10px;
+        color: #fff;
+        background: linear-gradient(110deg, #163f50 0%, #187d78 56%, #75a65b 100%);
+
+        .o_todo_dashboard_eyebrow {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #c7eee0;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 650;
+        }
+    }
+
+    .o_todo_dashboard_grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+        padding: 0.25rem 0 1rem;
+    }
+
+    .o_todo_kpi {
+        display: flex;
+        min-width: 0;
+        min-height: 145px;
+        align-items: stretch;
+        padding: 1.2rem;
+        overflow: hidden;
+        border: 0;
+        border-radius: 8px;
+        text-align: left;
+        white-space: normal;
+        transition: transform 140ms ease, box-shadow 140ms ease;
+
+        &:hover, &:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 20px rgba(26, 49, 59, 0.16);
+        }
+
+        .o_todo_kpi_content {
+            display: flex;
+            min-width: 0;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .o_todo_kpi_label {
+            color: rgba(24, 42, 54, 0.78);
+            font-size: 0.84rem;
+            font-weight: 650;
+        }
+
+        .o_todo_kpi_value {
+            margin: 0.25rem 0 0.1rem;
+            color: $todo-ink;
+            font-size: 2.2rem;
+            font-weight: 750;
+            line-height: 1.1;
+        }
+
+        .o_todo_kpi_note {
+            margin-top: auto;
+            padding-top: 0.7rem;
+            color: rgba(24, 42, 54, 0.72);
+            font-size: 0.76rem;
+        }
+    }
+
+    .o_todo_kpi--blue { background: #b9def3; }
+    .o_todo_kpi--teal { background: #a9e2d5; }
+    .o_todo_kpi--violet { background: #d6cafa; }
+    .o_todo_kpi--amber { background: #f4d88f; }
+    .o_todo_kpi--coral { background: #f3b99d; }
+    .o_todo_kpi--green { background: #c5e5a2; }
+    .o_todo_kpi--red { background: #f1aaa5; }
+    .o_todo_kpi--pink { background: #efbfd2; }
+}
+
+.o_todo_task_kanban {
+    .o_todo_task_card {
+        padding: 1rem;
+        border: 1px solid #e4eaec;
+        border-left: 4px solid #1c8a83;
+        border-radius: 7px;
+        background: #fff;
+        box-shadow: 0 2px 7px rgba(28, 49, 60, 0.06);
+        transition: transform 140ms ease, box-shadow 140ms ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 16px rgba(28, 49, 60, 0.12);
+        }
+    }
+
+    .o_todo_task_card_top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .o_todo_task_card_title {
+        min-width: 0;
+        color: $todo-ink;
+        font-size: 1rem;
+        font-weight: 700;
+        overflow-wrap: anywhere;
+    }
+
+    .o_todo_task_card_meta {
+        display: grid;
+        gap: 0.45rem;
+        margin-top: 0.9rem;
+        color: $todo-muted;
+        font-size: 0.84rem;
+    }
+
+    .o_todo_task_overdue {
+        color: #bd3c35;
+        font-weight: 700;
+    }
+
+    .o_todo_task_progress {
+        display: grid;
+        grid-template-columns: auto minmax(80px, 1fr);
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        color: $todo-muted;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .o_todo_dashboard .o_todo_dashboard_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .o_todo_dashboard .o_todo_dashboard_grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .o_todo_dashboard .o_todo_kpi {
+        min-height: 120px;
+    }
+}
